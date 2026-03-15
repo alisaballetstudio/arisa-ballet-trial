@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特別体験会 3/28｜ありさバレエスタジオ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Shippori+Mincho:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory:   #faf7f3;
+    --petal:   #f4ece8;
+    --mist:    #ede6f0;
+    --lav:     #c9bedd;
+    --lav-mid: #9c8cc0;
+    --lav-dk:  #6a5b9a;
+    --taupe:   #b0a090;
+    --ink:     #2e2838;
+    --ink-sub: #7c6e88;
+    --rose:    #c8a4a4;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+    background: var(--ivory);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ═══════════════════════════════
+     HERO
+  ═══════════════════════════════ */
+  .hero {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding: 80px 32px 100px;
+    text-align: center;
+    background: var(--ivory);
+    overflow: hidden;
+  }
+
+  /* 背景の幾何学装飾 */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,190,221,0.35);
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,190,221,0.25);
+  }
+
+  .hero-bg-bottom {
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,190,221,0.2);
+    pointer-events: none;
+  }
+
+  /* テキスト群 */
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--lav-mid);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: rise 0.9s 0.1s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  .hero-studio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(13px, 2.5vw, 16px);
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    color: var(--ink-sub);
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: rise 0.9s 0.2s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  .hero-heading {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(32px, 8vw, 52px);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: rise 0.9s 0.3s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  .hero-heading span {
+    color: var(--lav-dk);
+  }
+
+  /* 区切り線 */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 28px auto;
+    opacity: 0;
+    animation: rise 0.9s 0.42s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  .ornament-line {
+    width: 48px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--lav));
+  }
+  .ornament-line.r {
+    background: linear-gradient(90deg, var(--lav), transparent);
+  }
+  .ornament-diamond {
+    width: 5px; height: 5px;
+    background: var(--lav-mid);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* 特別体験会バッジ */
+  .event-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--lav-dk) 0%, #8b7ab8 100%);
+    color: white;
+    padding: 6px 22px;
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: rise 0.9s 0.5s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  /* 日時 */
+  .hero-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 10vw, 62px);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--lav-dk);
+    line-height: 1;
+    margin-bottom: 6px;
+    opacity: 0;
+    animation: rise 0.9s 0.58s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  .hero-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--ink-sub);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: rise 0.9s 0.64s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  /* 料金 */
+  .price-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: rise 0.9s 0.72s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  .price-old {
+    font-size: 14px;
+    color: var(--taupe);
+    text-decoration: line-through;
+    letter-spacing: 0.1em;
+  }
+
+  .price-arrow {
+    color: var(--lav-mid);
+    font-size: 12px;
+  }
+
+  .price-new {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--lav-dk);
+    letter-spacing: 0.05em;
+  }
+
+  .price-new sup {
+    font-size: 14px;
+    vertical-align: super;
+  }
+
+  /* CTAボタン */
+  .hero-cta {
+    opacity: 0;
+    animation: rise 0.9s 0.82s cubic-bezier(.22,1,.36,1) forwards;
+  }
+
+  .btn-reserve {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--lav-dk), #8b7ab8);
+    color: white;
+    text-decoration: none;
+    padding: 18px 48px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-reserve::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .btn-reserve:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(106,91,154,0.35);
+  }
+
+  .btn-reserve:hover::before { opacity: 1; }
+  .btn-reserve:active { transform: translateY(-1px); }
+
+  .btn-sub {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--ink-sub);
+    letter-spacing: 0.2em;
+  }
+
+  /* スクロールヒント */
+  .scroll-cue {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: rise 1s 1.4s ease forwards;
+  }
+
+  .scroll-cue span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--lav);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--lav), transparent);
+    animation: scrollDrop 2s ease infinite;
+  }
+
+  @keyframes scrollDrop {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  }
+
+  /* ═══════════════════════════════
+     COPY SECTION
+  ═══════════════════════════════ */
+  .copy-section {
+    background: white;
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .copy-section .inner {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .section-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--lav-mid);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .copy-lead {
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: 400;
+    line-height: 1.9;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .copy-lead em {
+    font-style: normal;
+    color: var(--lav-dk);
+    border-bottom: 1px solid var(--lav);
+    padding-bottom: 1px;
+  }
+
+  .copy-body {
+    font-size: 14px;
+    line-height: 2.4;
+    color: var(--ink-sub);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  /* ═══════════════════════════════
+     DETAIL SECTION
+  ═══════════════════════════════ */
+  .detail-section {
+    background: var(--mist);
+    padding: 72px 32px;
+  }
+
+  .detail-section .inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .sec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.5em;
+    color: var(--lav-mid);
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .sec-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--lav), transparent);
+  }
+
+  .detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--lav);
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(201,190,221,0.4);
+  }
+
+  .detail-key {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--lav-mid);
+    text-transform: uppercase;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .detail-val {
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: 0.12em;
+    line-height: 1.7;
+  }
+
+  .detail-val strong {
+    font-weight: 500;
+    color: var(--lav-dk);
+  }
+
+  .detail-val .strike {
+    text-decoration: line-through;
+    color: var(--taupe);
+    font-size: 13px;
+    margin-right: 8px;
+  }
+
+  /* ═══════════════════════════════
+     NOTICE
+  ═══════════════════════════════ */
+  .notice-section {
+    background: white;
+    padding: 60px 32px;
+  }
+
+  .notice-section .inner {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .notice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .notice-card {
+    border: 1px solid var(--lav);
+    padding: 22px 20px;
+    background: #fdfaff;
+  }
+
+  .notice-card .n-icon {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .notice-card .n-title {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--lav-dk);
+    margin-bottom: 6px;
+  }
+
+  .notice-card .n-body {
+    font-size: 12px;
+    color: var(--ink-sub);
+    line-height: 1.9;
+    letter-spacing: 0.06em;
+  }
+
+  /* ═══════════════════════════════
+     BOTTOM CTA
+  ═══════════════════════════════ */
+  .cta-section {
+    background: linear-gradient(160deg, #ede6f0 0%, #e5dbee 100%);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .cta-section .inner {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .cta-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 300;
+    color: var(--lav-dk);
+    letter-spacing: 0.18em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    color: var(--ink-sub);
+    letter-spacing: 0.14em;
+    line-height: 2.2;
+    margin-bottom: 36px;
+  }
+
+  .cta-note {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--ink-sub);
+    letter-spacing: 0.18em;
+  }
+
+  /* ═══════════════════════════════
+     FOOTER
+  ═══════════════════════════════ */
+  footer {
+    background: var(--ink);
+    padding: 36px 24px;
+    text-align: center;
+  }
+
+  .footer-studio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.25em;
+  }
+
+  footer a {
+    color: rgba(201,190,221,0.6);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    margin-top: 12px;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+
+  footer a:hover { color: var(--lav); }
+
+  /* ═══════════════════════════════
+     ANIMATIONS
+  ═══════════════════════════════ */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ═══════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════ */
+  @media (max-width: 480px) {
+    .notice-grid { grid-template-columns: 1fr; }
+    .detail-item { flex-direction: column; gap: 6px; }
+    .detail-key { min-width: unset; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-bottom"></div>
+
+  <div class="hero-content">
+    <p class="hero-tag">Special Trial Class</p>
+    <p class="hero-studio">ありさバレエスタジオ</p>
+    <h1 class="hero-heading">大人のための<br><span>バレエクラス</span></h1>
+
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line r"></div>
+    </div>
+
+    <p class="event-badge">♡ ブランク組歓迎 ♡</p>
+
+    <p class="hero-date">3月28日（土）</p>
+    <p class="hero-time">12:10 — 13:30</p>
+
+    <div class="price-wrap">
+      <span class="price-old">通常 2,500円</span>
+      <span class="price-arrow">▶</span>
+      <span class="price-new"><sup>￥</sup>1,000</span>
+    </div>
+
+    <div class="hero-cta">
+      <!-- ▼ Google フォームのURLをこちらに入れてください -->
+      <a class="btn-reserve" href="https://docs.google.com/forms/d/e/1FAIpQLSfRaLGk-AKnZCUDVdkvqIEmcwf7fvbBlH-dNZGuo7qg49zzng/viewform" target="_blank" rel="noopener">
+        体験レッスンを予約する
+      </a>
+      <p class="btn-sub">※ 枠に限りがあります。お早めに。</p>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══ COPY ══ -->
+<section class="copy-section">
+  <div class="inner">
+    <p class="section-en">For You</p>
+    <p class="copy-lead">
+      バレエ経験はある。<br>
+      でも、<em>今の身体に合う場所</em>がほしい。
+    </p>
+    <p class="copy-body">
+      ブランクがあっても大丈夫。<br>
+      力を抜いて、感覚を整えて、<br>
+      "今の私で踊れる身体" に戻していきます。
+    </p>
+  </div>
+</section>
+
+<!-- ══ DETAIL ══ -->
+<section class="detail-section">
+  <div class="inner">
+    <p class="sec-title">Event Details</p>
+    <div class="detail-list">
+      <div class="detail-item">
+        <span class="detail-key">日時</span>
+        <span class="detail-val"><strong>3月28日（土）12:10 〜 13:30</strong></span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-key">場所</span>
+        <span class="detail-val">ありさバレエスタジオ＠<strong>赤坂</strong></span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-key">料金</span>
+        <span class="detail-val">
+          <span class="strike">2,500円</span>
+          <strong>1,000円</strong>（特別体験価格）
+        </span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-key">対象</span>
+        <span class="detail-val">バレエ経験のある大人女性<br>ブランクのある方・再開希望の方歓迎</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-key">予約</span>
+        <span class="detail-val">下記フォームより事前予約制<br>※ 定員に達し次第締切</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NOTICE ══ -->
+<section class="notice-section">
+  <div class="inner">
+    <p class="sec-title">ご準備について</p>
+    <div class="notice-grid">
+      <div class="notice-card">
+        <span class="n-icon">👗</span>
+        <p class="n-title">服装</p>
+        <p class="n-body">動きやすい服装でOK。レオタード不要です。</p>
+      </div>
+      <div class="notice-card">
+        <span class="n-icon">🩰</span>
+        <p class="n-title">シューズ</p>
+        <p class="n-body">バレエシューズまたは靴下をご持参ください。</p>
+      </div>
+      <div class="notice-card">
+        <span class="n-icon">📋</span>
+        <p class="n-title">予約方法</p>
+        <p class="n-body">Googleフォームより事前にお申し込みください。</p>
+      </div>
+      <div class="notice-card">
+        <span class="n-icon">❌</span>
+        <p class="n-title">キャンセル</p>
+        <p class="n-body">前日17時までにご連絡をお願いします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOTTOM CTA ══ -->
+<section class="cta-section">
+  <div class="inner">
+    <h2 class="cta-heading">ご予約はこちらから</h2>
+    <p class="cta-sub">
+      3月28日（土）12:10 〜 13:30<br>
+      体験料 1,000円 · 赤坂
+    </p>
+    <!-- ▼ Google フォームのURLをこちらにも入れてください -->
+    <a class="btn-reserve" href="https://docs.google.com/forms/d/e/1FAIpQLSfRaLGk-AKnZCUDVdkvqIEmcwf7fvbBlH-dNZGuo7qg49zzng/viewform" target="_blank" rel="noopener">
+      Googleフォームで予約する
+    </a>
+    <p class="cta-note">※ 定員になり次第受付終了となります</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p class="footer-studio">ARISA BALLET STUDIO</p>
+  <p class="footer-sub">ありさバレエスタジオ＠赤坂</p>
+  <a href="https://alisaballet.com/menu" target="_blank" rel="noopener">alisaballet.com →</a>
+</footer>
+
+</body>
+</html>

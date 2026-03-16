@@ -547,6 +547,73 @@
   footer a:hover { color: var(--lav); }
 
   /* ═══════════════════════════════
+     FOR WHOM
+  ═══════════════════════════════ */
+  .for-whom-section {
+    background: var(--ivory);
+    padding: 72px 32px;
+  }
+
+  .for-whom-section .inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .for-whom-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--lav);
+    margin-bottom: 32px;
+  }
+
+  .for-whom-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(201,190,221,0.35);
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+  }
+
+  .fw-icon {
+    color: var(--lav-mid);
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .reassure-box {
+    background: linear-gradient(135deg, #f5f0ff, #ede6f5);
+    border-left: 3px solid var(--lav-dk);
+    padding: 24px 28px;
+  }
+
+  .reassure-text {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 2.2;
+    letter-spacing: 0.1em;
+  }
+
+  /* CTA reassure line */
+  .cta-reassure {
+    font-size: 14px;
+    color: var(--lav-dk);
+    letter-spacing: 0.14em;
+    line-height: 1.9;
+    margin-bottom: 24px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  /* ═══════════════════════════════
      ANIMATIONS
   ═══════════════════════════════ */
   @keyframes rise {
@@ -582,7 +649,7 @@
       <div class="ornament-line r"></div>
     </div>
 
-    <p class="event-badge">♡ ブランク組歓迎 ♡</p>
+    <p class="event-badge">♡ 中学・高校からの経験者歓迎 · ブランク組歓迎 ♡</p>
 
     <p class="hero-date">3月28日（土）</p>
     <p class="hero-time">12:10 — 13:40</p>
@@ -613,7 +680,7 @@
   <div class="inner">
     <p class="section-en">For You</p>
     <p class="copy-lead">
-      バレエ経験はある。<br>
+      中学・高校まで続けていた。<br>
       でも、<em>今の身体に合う場所</em>がほしい。
     </p>
     <p class="copy-body">
@@ -621,6 +688,38 @@
       力を抜いて、感覚を整えて、<br>
       "今の私で踊れる身体" に戻していきます。
     </p>
+  </div>
+</section>
+
+<!-- ══ FOR WHOM ══ -->
+<section class="for-whom-section">
+  <div class="inner">
+    <p class="sec-title">こんな方へ</p>
+    <ul class="for-whom-list">
+      <li>
+        <span class="fw-icon">✦</span>
+        <span>中学・高校までバレエを頑張っていた方</span>
+      </li>
+      <li>
+        <span class="fw-icon">✦</span>
+        <span>10年以上のブランクがあるけれど、また踊りたい方</span>
+      </li>
+      <li>
+        <span class="fw-icon">✦</span>
+        <span>「今の自分」に合わせたペースで、基礎からしっかり積み上げたい方</span>
+      </li>
+      <li>
+        <span class="fw-icon">✦</span>
+        <span>ポワントをまた履いてみたい方</span>
+      </li>
+    </ul>
+    <div class="reassure-box">
+      <p class="reassure-text">
+        現在、メンバーの約半数がブランクを経て再開された方々です。<br>
+        10年ぶりという方もいらっしゃいます。<br>
+        安心してお越しください。
+      </p>
+    </div>
   </div>
 </section>
 
@@ -727,7 +826,7 @@
       3月28日（土）12:10 〜 13:40<br>
       体験料 1,000円 · 赤坂
     </p>
-    <!-- ▼ Google フォームのURLをこちらにも入れてください -->
+    <p class="cta-reassure">10年ぶりでも大丈夫。あなたのペースで、一緒に始めましょう。</p>
     <a class="btn-reserve" href="https://docs.google.com/forms/d/e/1FAIpQLSfRaLGk-AKnZCUDVdkvqIEmcwf7fvbBlH-dNZGuo7qg49zzng/viewform?usp=pp_url&entry.1753222212=3/28(%E5%9C%9F)+12:10-13:40/%E8%B5%A4%E5%9D%82/%E5%A4%A7%E4%BA%BA%E4%B8%AD%E7%B4%9A" target="_blank" rel="noopener">
       Googleフォームで予約する
     </a>
